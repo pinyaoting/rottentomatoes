@@ -10,6 +10,7 @@
 #import "MovieCell.h"
 #import "MovieDetailViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "SVProgressHUD.h"
 
 @interface MovieViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -24,12 +25,14 @@
     
     NSString *urlString = @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=dagqdghwaq3e3mxyrp7kmmj5";
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
+    [SVProgressHUD showWithStatus:@"Loading"];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         //callback here
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
 
         self.movies = responseDictionary[@"movies"];
         [self.tableView reloadData];
+        [SVProgressHUD dismiss];
     }];
     
     self.title = @"Movies";
