@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface MovieDetailViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *synopsisLabel;
+
+
 
 @property (nonatomic, strong) NSDictionary *movie;
 @end

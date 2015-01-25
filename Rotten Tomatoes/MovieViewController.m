@@ -46,14 +46,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
     MovieDetailViewController *vc = [[MovieDetailViewController alloc] init];
     
     vc.movie = self.movies[indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
-    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
