@@ -8,6 +8,7 @@
 
 #import "MovieDetailViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "Constants.h"
 
 @interface MovieDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *posterView;
@@ -21,12 +22,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.titleLabel.text = self.movie[@"title"];
+    self.titleLabel.text = self.movie[ROTTEN_TOMATOES_TITLE_PATH];
     self.synopsisLabel.text = self.movie[@"synopsis"];
     
-    NSString* imageUrl = [[self.movie valueForKeyPath:@"posters.original"] stringByReplacingOccurrencesOfString:@"_tmb" withString:@"_ori"];
+    NSString *thumbnailUrl = [self.movie valueForKeyPath:@"posters.thumbnail"];
+    NSString *imageUrl = [[self.movie valueForKeyPath:@"posters.original"] stringByReplacingOccurrencesOfString:@"_tmb" withString:@"_ori"];
     
-    [self.posterView setImageWithURL:[NSURL URLWithString:imageUrl]];
+    [self.posterView setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:thumbnailUrl]]]];
 }
 
 - (void)didReceiveMemoryWarning {
