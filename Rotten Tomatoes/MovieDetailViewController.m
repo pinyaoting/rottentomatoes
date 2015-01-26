@@ -26,7 +26,6 @@
     
     NSString* imageUrl = [[self.movie valueForKeyPath:@"posters.original"] stringByReplacingOccurrencesOfString:@"_tmb" withString:@"_ori"];
     
-    NSLog(@"%@", imageUrl);
     [self.posterView setImageWithURL:[NSURL URLWithString:imageUrl]];
 }
 

@@ -15,6 +15,7 @@
 @interface MovieViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *movies;
+@property (weak, nonatomic) IBOutlet UILabel *errorMsg;
 
 @end
 
@@ -26,7 +27,14 @@
     NSString *urlString = @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=dagqdghwaq3e3mxyrp7kmmj5";
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
     [SVProgressHUD showWithStatus:@"Loading"];
+
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        
+        if (connectionError) {
+            self.errorMsg.text = @"Network Error";
+            self.errorMsg.hidden = NO;
+            return;
+        }
         //callback here
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
 
@@ -69,7 +77,7 @@
     cell.synopsisLabel.text = movie[@"synopsis"];
     
     NSURL *imageUrl = [NSURL URLWithString:[movie valueForKeyPath:@"posters.thumbnail"]];
-    [cell.posterView setImageWithURLRequest:[[NSURLRequest alloc] initWithURL:imageUrl] placeholderImage:[UIImage imageNamed:@"avatar.png"] success:nil failure:nil];
+    [cell.posterView setImageWithURLRequest:[[NSURLRequest alloc] initWithURL:imageUrl] placeholderImage:[UIImage imageNamed:@"cinema.png"] success:nil failure:nil];
     [cell.posterView setImageWithURL:[NSURL URLWithString:[movie valueForKeyPath:@"posters.thumbnail"]]];
     return cell;
 }
