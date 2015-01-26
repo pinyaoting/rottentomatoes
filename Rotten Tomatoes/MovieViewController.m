@@ -84,13 +84,12 @@
     cell.synopsisLabel.text = movie[ROTTEN_TOMATOES_SYNOPSIS_PATH];
     
     NSURL *imageUrl = [NSURL URLWithString:[movie valueForKeyPath:ROTTEN_TOMATOES_THUMBNAIL_PATH]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:imageUrl cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:5.0f];
     
-    [cell.posterView setImageWithURLRequest:[NSURLRequest requestWithURL:imageUrl] placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+    [cell.posterView setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         [UIView transitionWithView:cell.posterView duration:1.0f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{ cell.posterView.image = image;
         } completion:nil];
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
+    } failure:nil];
     
     return cell;
 }

@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *posterView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *synopsisLabel;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -22,36 +23,36 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.titleLabel.text = self.movie[ROTTEN_TOMATOES_TITLE_PATH];
-    self.synopsisLabel.text = self.movie[@"synopsis"];
+    [self initScrollView];
     
-    NSString *thumbnailUrl = [self.movie valueForKeyPath:@"posters.thumbnail"];
-    NSString *imageUrl = [[self.movie valueForKeyPath:@"posters.original"] stringByReplacingOccurrencesOfString:@"_tmb" withString:@"_ori"];
+    NSString *thumbnailUrl = [self.movie valueForKeyPath:ROTTEN_TOMATOES_THUMBNAIL_PATH];
+    NSString *imageUrl = [[self.movie valueForKeyPath:ROTTEN_TOMATOES_ORIGINAL_PATH] stringByReplacingOccurrencesOfString:@"_tmb" withString:@"_ori"];
     
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:imageUrl] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:5.0f];
     
-    [self.posterView setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:imageUrl]] placeholderImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:thumbnailUrl]]] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+    [self.posterView setImageWithURLRequest:request placeholderImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:thumbnailUrl]]] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         [UIView transitionWithView:self.posterView duration:2.0f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{ self.posterView.image = image;
         } completion:nil];
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
+    } failure:nil];
+}
+
+- (void) initScrollView {
+    [self.scrollView addSubview:self.titleLabel];
+    [self.scrollView addSubview:self.synopsisLabel];
     
-//    [self.posterView setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:thumbnailUrl]]]];
+    self.titleLabel.text = self.movie[ROTTEN_TOMATOES_TITLE_PATH];
+    self.synopsisLabel.text = self.movie[ROTTEN_TOMATOES_SYNOPSIS_PATH];
+    [self.synopsisLabel sizeToFit];
+    
+    CGRect contentRect = CGRectZero;
+    for (UIView *view in self.scrollView.subviews)
+        contentRect = CGRectUnion(contentRect, view.frame);
+    self.scrollView.contentSize = contentRect.size;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
