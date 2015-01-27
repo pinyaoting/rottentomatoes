@@ -24,4 +24,7 @@ extern NSString *const STREAM_TITLE;
 extern NSString *const NETWORK_ERROR_MSG;
 extern NSString *const LOADING;
 
+extern NSString *const ROTTEN_TOMATOES_SUFFIX_TMB;
+extern NSString *const ROTTEN_TOMATOES_SUFFIX_ORI;
+
 #endif

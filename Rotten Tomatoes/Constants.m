@@ -20,3 +20,6 @@ NSString *const STREAM_CELL_NAME = @"MovieCell";
 NSString *const STREAM_TITLE = @"Movies";
 NSString *const NETWORK_ERROR_MSG = @"Network Error";
 NSString *const LOADING = @"Loading";
+
+NSString *const ROTTEN_TOMATOES_SUFFIX_TMB = @"_tmb";
+NSString *const ROTTEN_TOMATOES_SUFFIX_ORI = @"_ori";

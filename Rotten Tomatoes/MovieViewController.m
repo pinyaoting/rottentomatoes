@@ -13,11 +13,13 @@
 #import "SVProgressHUD.h"
 #import "Constants.h"
 
-@interface MovieViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface MovieViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *movies;
 @property (weak, nonatomic) IBOutlet UILabel *errorMsg;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) NSMutableArray *filteredMovies;
 
 @end
 
@@ -32,6 +34,8 @@
     self.tableView.delegate = self;
     self.tableView.rowHeight = 128;
     [self.tableView registerNib:[UINib nibWithNibName:STREAM_CELL_NAME bundle:nil]forCellReuseIdentifier:STREAM_CELL_NAME];
+    
+    self.searchBar.delegate = self;
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(onRefresh) forControlEvents:UIControlEventValueChanged];
@@ -55,6 +59,7 @@
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         
         self.movies = responseDictionary[ROTTEN_TOMATOES_DATA_PATH];
+        self.filteredMovies = [NSMutableArray arrayWithArray:self.movies];
         [self.tableView reloadData];
     }];
 }
@@ -68,18 +73,18 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     MovieDetailViewController *vc = [[MovieDetailViewController alloc] init];
     
-    vc.movie = self.movies[indexPath.row];
+    vc.movie = self.filteredMovies[indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.movies.count;
+    return self.filteredMovies.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MovieCell* cell = [tableView dequeueReusableCellWithIdentifier:STREAM_CELL_NAME];
     
-    NSDictionary *movie = self.movies[indexPath.row];
+    NSDictionary *movie = self.filteredMovies[indexPath.row];
     cell.titleLabel.text = movie[ROTTEN_TOMATOES_TITLE_PATH];
     cell.synopsisLabel.text = movie[ROTTEN_TOMATOES_SYNOPSIS_PATH];
     
@@ -92,6 +97,23 @@
     } failure:nil];
     
     return cell;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+
+    [self.filteredMovies removeAllObjects];
+    
+    // edge case handling
+    if ([searchText isEqualToString:@""]) {
+        self.filteredMovies = [NSMutableArray arrayWithArray:self.movies];
+        [self.tableView reloadData];
+        return;
+    }
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.title contains[c] %@",searchText];
+    self.filteredMovies = [NSMutableArray arrayWithArray:[self.movies filteredArrayUsingPredicate:predicate]];
+    
+    [self.tableView reloadData];
 }
 
 @end

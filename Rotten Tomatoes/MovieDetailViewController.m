@@ -26,7 +26,7 @@
     [self initScrollView];
     
     NSString *thumbnailUrl = [self.movie valueForKeyPath:ROTTEN_TOMATOES_THUMBNAIL_PATH];
-    NSString *imageUrl = [[self.movie valueForKeyPath:ROTTEN_TOMATOES_ORIGINAL_PATH] stringByReplacingOccurrencesOfString:@"_tmb" withString:@"_ori"];
+    NSString *imageUrl = [[self.movie valueForKeyPath:ROTTEN_TOMATOES_ORIGINAL_PATH] stringByReplacingOccurrencesOfString:ROTTEN_TOMATOES_SUFFIX_TMB withString:ROTTEN_TOMATOES_SUFFIX_ORI];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:imageUrl] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:5.0f];
     

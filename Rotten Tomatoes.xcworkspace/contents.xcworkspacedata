@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:dvd.png">
+   </FileRef>
+   <FileRef
+      location = "group:movie.png">
+   </FileRef>
+   <FileRef
       location = "group:Rotten Tomatoes.xcodeproj">
    </FileRef>
    <FileRef
