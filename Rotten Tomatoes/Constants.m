@@ -11,7 +11,8 @@
 
 NSString *const ROTTEN_TOMATOES_TITLE_PATH = @"title";
 NSString *const ROTTEN_TOMATOES_SYNOPSIS_PATH = @"synopsis";
-NSString *const ROTTEN_TOMATOES_URL_STRING = @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=dagqdghwaq3e3mxyrp7kmmj5";
+NSString *const ROTTEN_TOMATOES_URL_MOVIE = @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=dagqdghwaq3e3mxyrp7kmmj5";
+NSString *const ROTTEN_TOMATOES_URL_DVD = @"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals?apikey=dagqdghwaq3e3mxyrp7kmmj5";
 NSString *const ROTTEN_TOMATOES_DATA_PATH = @"movies";
 NSString *const ROTTEN_TOMATOES_THUMBNAIL_PATH = @"posters.thumbnail";
 NSString *const ROTTEN_TOMATOES_ORIGINAL_PATH = @"posters.original";

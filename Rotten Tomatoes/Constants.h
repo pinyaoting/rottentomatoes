@@ -11,7 +11,8 @@
 
 extern NSString *const ROTTEN_TOMATOES_TITLE_PATH;
 extern NSString *const ROTTEN_TOMATOES_SYNOPSIS_PATH;
-extern NSString *const ROTTEN_TOMATOES_URL_STRING;
+extern NSString *const ROTTEN_TOMATOES_URL_MOVIE;
+extern NSString *const ROTTEN_TOMATOES_URL_DVD;
 
 extern NSString *const ROTTEN_TOMATOES_DATA_PATH;
 

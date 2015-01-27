@@ -13,17 +13,24 @@
 #import "SVProgressHUD.h"
 #import "Constants.h"
 
-@interface MovieViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
+@interface MovieViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UITabBarDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *movies;
 @property (weak, nonatomic) IBOutlet UILabel *errorMsg;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSMutableArray *filteredMovies;
+@property (weak, nonatomic) IBOutlet UITabBar *tabBar;
+@property (strong, nonatomic) NSString *apiEndpoint;
 
 @end
 
 @implementation MovieViewController
+
+typedef enum {
+    ROTTEN_TOMATOES_TAB_ENUM_MOVIE,
+    ROTTEN_TOMATOES_TAB_ENUM_DVD
+} ROTTEN_TOMATOES_TAB_ENUM;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,6 +44,9 @@
     
     self.searchBar.delegate = self;
     
+    self.tabBar.delegate = self;
+    self.apiEndpoint = ROTTEN_TOMATOES_URL_MOVIE;
+    
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(onRefresh) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
@@ -45,7 +55,7 @@
 }
 
 - (void)onRefresh {
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:ROTTEN_TOMATOES_URL_STRING]];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:self.apiEndpoint]];
 
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         [self.refreshControl endRefreshing];
@@ -114,6 +124,21 @@
     self.filteredMovies = [NSMutableArray arrayWithArray:[self.movies filteredArrayUsingPredicate:predicate]];
     
     [self.tableView reloadData];
+}
+
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
+
+    switch (item.tag) {
+        case ROTTEN_TOMATOES_TAB_ENUM_DVD:
+            self.apiEndpoint = ROTTEN_TOMATOES_URL_DVD;
+            break;
+        case ROTTEN_TOMATOES_TAB_ENUM_MOVIE:
+        default:
+            self.apiEndpoint = ROTTEN_TOMATOES_URL_MOVIE;
+            break;
+    }
+        
+    [self onRefresh];
 }
 
 @end

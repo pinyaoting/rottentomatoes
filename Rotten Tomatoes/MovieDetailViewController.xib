@@ -34,11 +34,11 @@
                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="American Sniper" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RGj-0g-n8l">
+                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="American Sniper" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RGj-0g-n8l">
                             <rect key="frame" x="0.0" y="317" width="320" height="86"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                            <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="30"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>

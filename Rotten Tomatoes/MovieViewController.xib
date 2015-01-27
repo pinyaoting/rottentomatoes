@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="errorMsg" destination="XB0-5I-QhU" id="3Xv-4T-S18"/>
                 <outlet property="searchBar" destination="HpE-36-cy2" id="wlU-05-NzK"/>
+                <outlet property="tabBar" destination="92H-cF-x2J" id="a0c-Ih-qlE"/>
                 <outlet property="tableView" destination="jPa-YF-zvt" id="pZ9-ei-Uem"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -35,8 +36,8 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <items>
-                        <tabBarItem title="" systemItem="favorites" id="c2g-ty-bP8"/>
-                        <tabBarItem systemItem="more" id="Lb2-5U-xUz"/>
+                        <tabBarItem title="Movie" image="movie.png" id="c2g-ty-bP8"/>
+                        <tabBarItem tag="1" title="DVD" image="dvd.png" id="Lb2-5U-xUz"/>
                     </items>
                 </tabBar>
                 <searchBar contentMode="redraw" id="HpE-36-cy2">
@@ -48,6 +49,10 @@
             <point key="canvasLocation" x="434" y="212"/>
         </view>
     </objects>
+    <resources>
+        <image name="dvd.png" width="43" height="43"/>
+        <image name="movie.png" width="43" height="43"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

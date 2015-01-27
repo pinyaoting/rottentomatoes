@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		670EACC71A719A190021B802 /* MovieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 670EACC51A719A190021B802 /* MovieDetailViewController.m */; };
 		670EACC81A719A190021B802 /* MovieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 670EACC61A719A190021B802 /* MovieDetailViewController.xib */; };
+		67323E4C1A77168E00FA3F38 /* dvd.png in Resources */ = {isa = PBXBuildFile; fileRef = 67323E4B1A77168E00FA3F38 /* dvd.png */; };
+		67323E501A77178700FA3F38 /* movie.png in Resources */ = {isa = PBXBuildFile; fileRef = 67323E4F1A77178700FA3F38 /* movie.png */; };
 		67338DF01A6F544900D621B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 67338DEF1A6F544900D621B0 /* main.m */; };
 		67338DF31A6F544900D621B0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67338DF21A6F544900D621B0 /* AppDelegate.m */; };
 		67338DFB1A6F544A00D621B0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67338DFA1A6F544A00D621B0 /* Images.xcassets */; };
@@ -38,6 +40,8 @@
 		670EACC41A719A190021B802 /* MovieDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDetailViewController.h; sourceTree = "<group>"; };
 		670EACC51A719A190021B802 /* MovieDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDetailViewController.m; sourceTree = "<group>"; };
 		670EACC61A719A190021B802 /* MovieDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieDetailViewController.xib; sourceTree = "<group>"; };
+		67323E4B1A77168E00FA3F38 /* dvd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dvd.png; sourceTree = "<group>"; };
+		67323E4F1A77178700FA3F38 /* movie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = movie.png; sourceTree = "<group>"; };
 		67338DEA1A6F544900D621B0 /* Rotten Tomatoes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rotten Tomatoes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67338DEE1A6F544900D621B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		67338DEF1A6F544900D621B0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -132,6 +136,8 @@
 		67338DED1A6F544900D621B0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				67323E4F1A77178700FA3F38 /* movie.png */,
+				67323E4B1A77168E00FA3F38 /* dvd.png */,
 				67338DEE1A6F544900D621B0 /* Info.plist */,
 				67338DEF1A6F544900D621B0 /* main.m */,
 			);
@@ -246,6 +252,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67323E501A77178700FA3F38 /* movie.png in Resources */,
+				67323E4C1A77168E00FA3F38 /* dvd.png in Resources */,
 				670EACC81A719A190021B802 /* MovieDetailViewController.xib in Resources */,
 				67338E1C1A6F569E00D621B0 /* MovieViewController.xib in Resources */,
 				67338DFE1A6F544A00D621B0 /* LaunchScreen.xib in Resources */,
