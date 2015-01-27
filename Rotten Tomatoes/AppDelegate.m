@@ -19,9 +19,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//        self.window = [[UIWindow alloc] initWithFrame:CGRectMake(0,0,[[UIScreen mainScreen] applicationFrame].size.width,[[UIScreen mainScreen] applicationFrame].size.height)];
     MovieViewController *vc = [MovieViewController new];
     UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
+    
+    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"Chalkduster" size:21.0], NSFontAttributeName, nil]];
+        
     self.window.rootViewController = nvc;
     [self.window makeKeyAndVisible];
     

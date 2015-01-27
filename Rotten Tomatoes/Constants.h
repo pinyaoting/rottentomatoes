@@ -21,7 +21,8 @@ extern NSString *const ROTTEN_TOMATOES_ORIGINAL_PATH;
 extern NSString *const MOVIE_POSTER_PLACEHOLDER_PATH;
 
 extern NSString *const STREAM_CELL_NAME;
-extern NSString *const STREAM_TITLE;
+extern NSString *const TITLE_MOVIE;
+extern NSString *const TITLE_DVD;
 extern NSString *const NETWORK_ERROR_MSG;
 extern NSString *const LOADING;
 

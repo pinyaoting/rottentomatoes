@@ -36,7 +36,9 @@ typedef enum {
     [super viewDidLoad];
 
     [SVProgressHUD showWithStatus:LOADING];
-    self.title = STREAM_TITLE;
+    
+    self.title = TITLE_MOVIE;
+    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.rowHeight = 128;
@@ -131,10 +133,12 @@ typedef enum {
     switch (item.tag) {
         case ROTTEN_TOMATOES_TAB_ENUM_DVD:
             self.apiEndpoint = ROTTEN_TOMATOES_URL_DVD;
+            self.title = TITLE_DVD;
             break;
         case ROTTEN_TOMATOES_TAB_ENUM_MOVIE:
         default:
             self.apiEndpoint = ROTTEN_TOMATOES_URL_MOVIE;
+            self.title = TITLE_MOVIE;
             break;
     }
         
