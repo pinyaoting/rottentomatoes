@@ -20,6 +20,7 @@
 		67338E0A1A6F544A00D621B0 /* Rotten_TomatoesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67338E091A6F544A00D621B0 /* Rotten_TomatoesTests.m */; };
 		67338E1B1A6F569E00D621B0 /* MovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67338E191A6F569E00D621B0 /* MovieViewController.m */; };
 		67338E1C1A6F569E00D621B0 /* MovieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67338E1A1A6F569E00D621B0 /* MovieViewController.xib */; };
+		67662F3F1A7766BE006D4017 /* GridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67662F3E1A7766BE006D4017 /* GridCell.xib */; };
 		679AF53F1A75CA450089D031 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 679AF53E1A75CA450089D031 /* Constants.m */; };
 		67A9B2211A718E280099B99D /* MovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A9B21F1A718E280099B99D /* MovieCell.m */; };
 		67A9B2221A718E280099B99D /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67A9B2201A718E280099B99D /* MovieCell.xib */; };
@@ -60,6 +61,7 @@
 		67338E181A6F569E00D621B0 /* MovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieViewController.h; sourceTree = "<group>"; };
 		67338E191A6F569E00D621B0 /* MovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieViewController.m; sourceTree = "<group>"; };
 		67338E1A1A6F569E00D621B0 /* MovieViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieViewController.xib; sourceTree = "<group>"; };
+		67662F3E1A7766BE006D4017 /* GridCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GridCell.xib; sourceTree = "<group>"; };
 		679AF53D1A75C9D60089D031 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		679AF53E1A75CA450089D031 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		67A9B21E1A718E280099B99D /* MovieCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieCell.h; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				67323E511A77297B00FA3F38 /* SettingsViewController.h */,
 				67323E521A77297B00FA3F38 /* SettingsViewController.m */,
 				67323E531A77297B00FA3F38 /* SettingsViewController.xib */,
+				67662F3E1A7766BE006D4017 /* GridCell.xib */,
 			);
 			path = "Rotten Tomatoes";
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				67323E4C1A77168E00FA3F38 /* dvd.png in Resources */,
 				670EACC81A719A190021B802 /* MovieDetailViewController.xib in Resources */,
 				67323E551A77297B00FA3F38 /* SettingsViewController.xib in Resources */,
+				67662F3F1A7766BE006D4017 /* GridCell.xib in Resources */,
 				67338E1C1A6F569E00D621B0 /* MovieViewController.xib in Resources */,
 				67338DFE1A6F544A00D621B0 /* LaunchScreen.xib in Resources */,
 				67A9B2221A718E280099B99D /* MovieCell.xib in Resources */,

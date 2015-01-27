@@ -10,6 +10,7 @@
 
 @interface SettingsViewController ()
 @property (weak, nonatomic) IBOutlet UISegmentedControl *displayModeSwitch;
+- (IBAction)onTap:(id)sender;
 
 @end
 
@@ -17,7 +18,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self loadUserPrefs];
+    [self updateUI];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,8 +33,6 @@
 
     long displayMode = [defaults integerForKey:@"displayMode"];
     
-    
-    NSLog(@"display:%ld",displayMode);
     if (displayMode >= 0) {
         self.displayModeSwitch.selectedSegmentIndex = displayMode;
     }
@@ -41,6 +41,7 @@
 - (void) saveUserPrefs {
     // access user defaults
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
     if (self.displayModeSwitch.selectedSegmentIndex >= 0) {
         [defaults setInteger:self.displayModeSwitch.selectedSegmentIndex forKey:@"displayMode"];
     }
@@ -52,4 +53,7 @@
     [self loadUserPrefs];
 }
 
+- (IBAction)onTap:(id)sender {
+    [self updateUI];
+}
 @end

@@ -29,11 +29,23 @@
                         <segment title="List"/>
                         <segment title="Grid"/>
                     </segments>
+                    <connections>
+                        <action selector="onTap:" destination="-1" eventType="valueChanged" id="UWW-fl-0LK"/>
+                    </connections>
                 </segmentedControl>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="CqW-UG-vL4" appends="YES" id="fty-bW-r0T"/>
+            </connections>
             <point key="canvasLocation" x="182" y="389"/>
         </view>
+        <tapGestureRecognizer id="CqW-UG-vL4">
+            <connections>
+                <action selector="onTap:" destination="-1" id="sfz-4c-en0"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
