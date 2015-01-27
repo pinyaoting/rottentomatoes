@@ -18,8 +18,8 @@ NSString *const ROTTEN_TOMATOES_THUMBNAIL_PATH = @"posters.thumbnail";
 NSString *const ROTTEN_TOMATOES_ORIGINAL_PATH = @"posters.original";
 NSString *const MOVIE_POSTER_PLACEHOLDER_PATH = @"cinema.png";
 NSString *const STREAM_CELL_NAME = @"MovieCell";
-NSString *const TITLE_MOVIE = @"top Movies";
-NSString *const TITLE_DVD = @"top DVD Rentals";
+NSString *const TITLE_MOVIE = @"Top Movies";
+NSString *const TITLE_DVD = @"Top DVD Rentals";
 NSString *const NETWORK_ERROR_MSG = @"Network Error";
 NSString *const LOADING = @"Loading";
 

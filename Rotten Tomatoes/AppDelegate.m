@@ -23,7 +23,8 @@
     UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
     
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"Chalkduster" size:21.0], NSFontAttributeName, nil]];
-        
+    [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
+    
     self.window.rootViewController = nvc;
     [self.window makeKeyAndVisible];
     

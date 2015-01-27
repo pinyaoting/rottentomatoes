@@ -12,6 +12,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "SVProgressHUD.h"
 #import "Constants.h"
+#import "SettingsViewController.h"
 
 @interface MovieViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UITabBarDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -38,6 +39,7 @@ typedef enum {
     [SVProgressHUD showWithStatus:LOADING];
     
     self.title = TITLE_MOVIE;
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"⚙" style:UIBarButtonItemStylePlain target:self action:@selector(onSettingsButton)];
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -59,6 +61,11 @@ typedef enum {
 - (void)onRefresh {
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:self.apiEndpoint]];
 
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    long displayMode = [defaults integerForKey:@"displayMode"];
+    NSLog(@"display mode: %ld", displayMode);
+    
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         [self.refreshControl endRefreshing];
         [SVProgressHUD dismiss];
@@ -143,6 +150,11 @@ typedef enum {
     }
         
     [self onRefresh];
+}
+
+- (void)onSettingsButton {
+    SettingsViewController* svc = [[SettingsViewController alloc] init];
+    [self.navigationController pushViewController:svc animated:YES];
 }
 
 @end
