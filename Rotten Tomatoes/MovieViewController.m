@@ -168,10 +168,13 @@ typedef enum {
     NSURL *imageUrl = [NSURL URLWithString:[movie valueForKeyPath:ROTTEN_TOMATOES_THUMBNAIL_PATH]];
     NSURLRequest *request = [NSURLRequest requestWithURL:imageUrl cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:5.0f];
     
-    UIImageView *imageView = (UIImageView*)[cell viewWithTag:10];
+    __weak UIImageView *gridPosterView = (UIImageView*)[cell viewWithTag:10];
 
-    [imageView setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-        [UIView transitionWithView:imageView duration:1.0f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{ imageView.image = image;
+    [gridPosterView setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        
+        UIImageView *strongRetainedPosterView = gridPosterView;
+        
+        [UIView transitionWithView:strongRetainedPosterView duration:1.0f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{ gridPosterView.image = image;
         } completion:nil];
     } failure:nil];
     
